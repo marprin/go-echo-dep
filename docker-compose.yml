@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: ./infra/docker/Dockerfile
+    ports:
+      - "7500:7600"
+    volumes:
+      - ".:/app/src/package-manager"
+    working_dir: /app/src/package-manager
+    command: bash -c "go build -o main && ./main"
